@@ -7,5 +7,15 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <div class="pokemonCardContainer">
+      <% data.forEach((pokemon) => { %>
+      <div class="pokemonCard">
+        <p><%= (pokemon.id).toString().padStart(3, '0') %></p>
+        <h2><%= pokemon.name %></h2>
+        <img className="pokemonImage" src="<%= pokemon.img_url%>" />
+        <p><%= pokemon.types %></p>
+      </div>
+      <% }) %>
+    </div>
   </body>
 </html>
