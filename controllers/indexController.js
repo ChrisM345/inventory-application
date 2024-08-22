@@ -1,5 +1,8 @@
+const { getPokemonData } = require("../db/queries");
+
 module.exports = {
-  get: (req, res) => {
-    res.render("indexView", { title: "Index" });
+  get: async (req, res) => {
+    pokemonData = await getPokemonData();
+    res.render("indexView", { title: "Pokedex", data: pokemonData });
   },
 };
