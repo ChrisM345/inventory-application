@@ -21,9 +21,14 @@ async function createPokemonDataBase() {
   await client.connect();
   for (let i = 1; i <= 151; i++) {
     const apiCall = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+    const apiCallFlavorText = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`);
     const data = await apiCall.json();
+    const flavorTextData = await apiCallFlavorText.json();
     const name = data.name;
     const imgURL = data.sprites.other["official-artwork"].front_default;
+    //[2] for Pokemon Yellow flavor text
+    //Replace ' with '' to escape it
+    const flavorText = flavorTextData.flavor_text_entries[2].flavor_text.replace(/\n|\f/g, " ").replace(/'/g, "''");
     let types = "";
     let moves = "";
     data.types.forEach((type) => {
@@ -39,13 +44,14 @@ async function createPokemonDataBase() {
     id INTEGER PRIMARY KEY,
     name VARCHAR ( 255 ),
     img_url VARCHAR ( 255 ),
-    types VARCHAR (255 ),
+    flavor_text TEXT,
+    types VARCHAR ( 255 ),
     moves TEXT
     );
     
-    INSERT INTO pokemon (id, name, img_url, types, moves)
+    INSERT INTO pokemon (id, name, img_url, flavor_text, types, moves)
     VALUES
-      ('${i}', '${name}', '${imgURL}', '${types}', '${moves}');
+      ('${i}', '${name}', '${imgURL}', '${flavorText}', '${types}', '${moves}');
     `;
     await client.query(SQL);
   }
