@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div class="header">
+      <h1><%= title %></h1>
+      <a href="/">Return to Home</a>
+    </div>
+    <div class="pokemonCardContainer">
+      <% data.forEach((pokemon) => { %>
+      <div class="pokemonCard">
+        <h2><%= pokemon.name %></h2>
+        <p>Pokemon ID: <%=(pokemon.id).toString().padStart(3, '0') %></p>
+        <img className="pokemonImage" src="<%= pokemon.img_url%>" />
+        <h3>Types</h3>
+        <p><%= pokemon.types %></p>
+        <h3>Description</h3>
+        <p><%= pokemon.flavor_text %></p>
+        <h3>Learnable Moves</h3>
+        <p><%= pokemon.moves %></p>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>
