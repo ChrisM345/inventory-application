@@ -9,10 +9,12 @@ app.set("view engine", "ejs");
 
 const indexRoute = require("./routes/indexRoute");
 const pokemonRoute = require("./routes/pokemonRoute");
+const trainerRoute = require("./routes/trainerRoute");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(assetsPath));
 app.use("/", indexRoute);
 app.use("/pokemon/", pokemonRoute);
+app.use("/trainer/", trainerRoute);
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
