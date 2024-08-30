@@ -20,9 +20,17 @@ async function searchPokemonType(type) {
   return rows;
 }
 
+async function addTrainer(name, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6) {
+  await pool.query(
+    "INSERT INTO trainers (name, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+    [name, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6]
+  );
+}
+
 module.exports = {
   getPokemonData,
   getPokemonDetails,
   searchPokemonName,
   searchPokemonType,
+  addTrainer,
 };
