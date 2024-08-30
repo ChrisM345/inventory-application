@@ -15,9 +15,10 @@
       </ul>
     </div>
     <div class="createTrainerForm">
+      <%- include("partials/errors.ejs") %>
       <form method="POST" action="/trainer/createTrainer">
         <label for="name">Name: </label>
-        <input type="text" id="name" name="name" required />
+        <input type="text" id="trainerName" name="trainerName" required />
         <br />
         <label for="pokemon1">Pokemon 1: </label>
         <input list="pokemon" id="pokemon1" name="pokemon1" required />
