@@ -1,5 +1,5 @@
 const { body, validationResult } = require("express-validator");
-const { addTrainer } = require("../db/queries");
+const { addTrainer, getTrainers, getPokemonImgURL } = require("../db/queries");
 
 const listOfPokemon = [
   "bulbasaur",
@@ -155,10 +155,6 @@ const listOfPokemon = [
   "mew",
 ];
 
-function pokemonToID(name) {
-  return listOfPokemon.indexOf(name) + 1;
-}
-
 const validatePokemon = [
   body("pokemon1").trim().isIn(listOfPokemon).withMessage(`Pokemon 1 must be part of the suggested list`),
   body("pokemon2").trim().isIn(listOfPokemon).withMessage(`Pokemon 2 must be part of the suggested list`),
@@ -168,8 +164,14 @@ const validatePokemon = [
   body("pokemon6").trim().isIn(listOfPokemon).withMessage(`Pokemon 6 must be part of the suggested list`),
 ];
 module.exports = {
-  get: (req, res) => {
-    res.render("trainerView", { title: "Trainers" });
+  get: async (req, res) => {
+    const trainerData = await getTrainers();
+    console.log(trainerData);
+    let urlData = {};
+    trainerData.forEach((trainer) => {
+      console.log(trainer.name);
+    });
+    res.render("trainerView", { title: "Trainers", trainerData: trainerData });
   },
 
   getCreateTrainer: (req, res) => {
@@ -177,20 +179,32 @@ module.exports = {
   },
   postCreateTrainer: [
     validatePokemon,
-    (req, res) => {
+    async (req, res) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).render("createTrainerView", { title: "Create Trainer", errors: errors.array() });
       }
       const { trainerName, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6 } = req.body;
+      const pokemon1URL = await getPokemonImgURL(pokemon1);
+      const pokemon2URL = await getPokemonImgURL(pokemon2);
+      const pokemon3URL = await getPokemonImgURL(pokemon3);
+      const pokemon4URL = await getPokemonImgURL(pokemon4);
+      const pokemon5URL = await getPokemonImgURL(pokemon5);
+      const pokemon6URL = await getPokemonImgURL(pokemon6);
       addTrainer(
         trainerName,
-        pokemonToID(pokemon1),
-        pokemonToID(pokemon2),
-        pokemonToID(pokemon3),
-        pokemonToID(pokemon4),
-        pokemonToID(pokemon5),
-        pokemonToID(pokemon6)
+        pokemon1,
+        pokemon1URL,
+        pokemon2,
+        pokemon2URL,
+        pokemon3,
+        pokemon3URL,
+        pokemon4,
+        pokemon4URL,
+        pokemon5,
+        pokemon5URL,
+        pokemon6,
+        pokemon6URL
       );
       res.redirect("/trainer");
     },

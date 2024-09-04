@@ -14,5 +14,24 @@
         <li><a href="/">Return to Home</a></li>
       </ul>
     </div>
+    <div class="trainerCardContainer">
+      <% trainerData.forEach((trainer) => { %>
+      <div class="trainerCard">
+        <h2><%= trainer.name %></h2>
+        <h3><%= trainer.pokemon1 %></h3>
+        <img className="trainerPokemonImage" src="<%=trainer.pokemon1url%>" />
+        <h3><%= trainer.pokemon2 %></h3>
+        <img className="trainerPokemonImage" src="<%=trainer.pokemon2url%>" />
+        <h3><%= trainer.pokemon3 %></h3>
+        <img className="trainerPokemonImage" src="<%=trainer.pokemon3url%>" />
+        <h3><%= trainer.pokemon4 %></h3>
+        <img className="trainerPokemonImage" src="<%=trainer.pokemon4url%>" />
+        <h3><%= trainer.pokemon5 %></h3>
+        <img className="trainerPokemonImage" src="<%=trainer.pokemon5url%>" />
+        <h3><%= trainer.pokemon6 %></h3>
+        <img className="trainerPokemonImage" src="<%=trainer.pokemon6url%>" />
+      </div>
+      <% }) %>
+    </div>
   </body>
 </html>
