@@ -16,22 +16,54 @@
     </div>
     <div class="trainerCardContainer">
       <% trainerData.forEach((trainer) => { %>
-      <div class="trainerCard">
+      <div class="test">
         <h2><%= trainer.name %></h2>
-        <h3><%= trainer.pokemon1 %></h3>
-        <img className="trainerPokemonImage" src="<%=trainer.pokemon1url%>" />
-        <h3><%= trainer.pokemon2 %></h3>
-        <img className="trainerPokemonImage" src="<%=trainer.pokemon2url%>" />
-        <h3><%= trainer.pokemon3 %></h3>
-        <img className="trainerPokemonImage" src="<%=trainer.pokemon3url%>" />
-        <h3><%= trainer.pokemon4 %></h3>
-        <img className="trainerPokemonImage" src="<%=trainer.pokemon4url%>" />
-        <h3><%= trainer.pokemon5 %></h3>
-        <img className="trainerPokemonImage" src="<%=trainer.pokemon5url%>" />
-        <h3><%= trainer.pokemon6 %></h3>
-        <img className="trainerPokemonImage" src="<%=trainer.pokemon6url%>" />
+        <div class="trainerCards">
+          <div class="trainerCard">
+            <h3><%= trainer.pokemon1 %></h3>
+            <img class="trainerPokemonImage" src="<%=trainer.pokemon1url%>" />
+            <form action="pokemon/<%= trainer.pokemon1%>" method="get">
+              <input type="submit" value="Details" />
+            </form>
+          </div>
+          <div class="trainerCard">
+            <h3><%= trainer.pokemon2 %></h3>
+            <img class="trainerPokemonImage" src="<%=trainer.pokemon2url%>" />
+            <form action="pokemon/<%= trainer.pokemon2%>" method="get">
+              <input type="submit" value="Details" />
+            </form>
+          </div>
+          <div class="trainerCard">
+            <h3><%= trainer.pokemon3 %></h3>
+            <img class="trainerPokemonImage" src="<%=trainer.pokemon3url%>" />
+            <form action="pokemon/<%= trainer.pokemon3%>" method="get">
+              <input type="submit" value="Details" />
+            </form>
+          </div>
+          <div class="trainerCard">
+            <h3><%= trainer.pokemon4 %></h3>
+            <img class="trainerPokemonImage" src="<%=trainer.pokemon4url%>" />
+            <form action="pokemon/<%= trainer.pokemon4%>" method="get">
+              <input type="submit" value="Details" />
+            </form>
+          </div>
+          <div class="trainerCard">
+            <h3><%= trainer.pokemon5 %></h3>
+            <img class="trainerPokemonImage" src="<%=trainer.pokemon5url%>" />
+            <form action="pokemon/<%= trainer.pokemon5%>" method="get">
+              <input type="submit" value="Details" />
+            </form>
+          </div>
+          <div class="trainerCard">
+            <h3><%= trainer.pokemon6 %></h3>
+            <img class="trainerPokemonImage" src="<%=trainer.pokemon6url%>" />
+            <form action="pokemon/<%= trainer.pokemon6%>" method="get">
+              <input type="submit" value="Details" />
+            </form>
+          </div>
+        </div>
+        <% }) %>
       </div>
-      <% }) %>
     </div>
   </body>
 </html>
