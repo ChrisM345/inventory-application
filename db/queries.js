@@ -10,6 +10,11 @@ async function getPokemonDetails(pokemonID) {
   return rows;
 }
 
+async function getPokemonDetailsByName(pokemonName) {
+  const { rows } = await pool.query(`SELECT * FROM pokemon WHERE name='${pokemonName}'`);
+  return rows;
+}
+
 async function getPokemonImgURL(name) {
   const { rows } = await pool.query(`SELECT img_url FROM pokemon WHERE name='${name}'`);
   return rows[0].img_url;
@@ -68,6 +73,7 @@ async function addTrainer(
 module.exports = {
   getPokemonData,
   getPokemonDetails,
+  getPokemonDetailsByName,
   getPokemonImgURL,
   searchPokemonName,
   searchPokemonType,
