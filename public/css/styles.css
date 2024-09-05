@@ -62,3 +62,36 @@ ul {
 li {
   padding-bottom: 10px;
 }
+
+.trainerCardContainer {
+  border: solid red;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 100px;
+  padding-right: 100px;
+  justify-content: center;
+}
+
+.test {
+  border: solid black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
+}
+
+.trainerCards {
+  border: solid black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+
+.trainerPokemonImage {
+  max-height: 200px;
+  height: auto;
+  width: auto;
+}
