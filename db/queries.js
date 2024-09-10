@@ -55,8 +55,6 @@ async function addTrainer(
   pokemon6,
   pokemon6URL
 ) {
-  console.log(`IN QUERY`);
-  console.log(name);
   await pool.query(
     "INSERT INTO trainers (name, pokemon1, pokemon1URL, pokemon2, pokemon2URL, pokemon3, pokemon3URL, pokemon4, pokemon4URL, pokemon5, pokemon5URL, pokemon6, pokemon6URL) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)",
     [

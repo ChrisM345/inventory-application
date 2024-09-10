@@ -15,12 +15,12 @@
       </ul>
     </div>
     <div class="createTrainerForm">
-      <%- include("partials/errors.ejs") %> <% if (data.id) {%>
+      <%- include("partials/errors.ejs") %> 
+      <%# if the data includes an ID that means we are editing and existing db entry %>
+      <% if (data.id) {%>
       <form method="POST" action="/trainer/<%=data.id%>/edit">
-      <h2>THERE IS ID</h2>
       <% } else { %>
       <form method="POST" action="/trainer/createTrainer">
-        <H2>NO ID</H2>
         <% } %>
         <label for="name">Name: </label>
         <input type="text" id="name" name="name" value="<%=data.name%>" required />

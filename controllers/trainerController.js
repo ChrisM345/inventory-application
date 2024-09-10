@@ -173,19 +173,17 @@ const validatePokemon = [
 module.exports = {
   get: async (req, res) => {
     const trainerData = await getTrainers();
-    let urlData = {};
-    trainerData.forEach((trainer) => {});
     res.render("trainerView", { title: "Trainers", trainerData: trainerData });
   },
 
   getCreateTrainer: (req, res) => {
     res.render("createTrainerView", { title: "Create Trainer", data: "" });
   },
+
   postCreateTrainer: [
     validatePokemon,
     async (req, res) => {
       const { name, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6 } = req.body;
-      console.log(req.body);
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(400).render("createTrainerView", {
@@ -226,22 +224,18 @@ module.exports = {
       res.redirect("/trainer");
     },
   ],
+
   getEditTrainer: async (req, res) => {
     const trainerData = await getTrainerByID(req.params.trainerID);
-    console.log(trainerData);
     res.render("createTrainerView", { title: "Edit Trainer", data: trainerData });
   },
+
   postEditTrainer: [
     validatePokemon,
     async (req, res) => {
-      console.log("hello");
-      console.log(req.body);
-      console.log(req.params.trainerID);
       const errors = validationResult(req);
-      console.log("right here!");
       let data = req.body;
       data.id = req.params.trainerID;
-      console.log(data);
       if (!errors.isEmpty()) {
         return res
           .status(400)
@@ -273,6 +267,7 @@ module.exports = {
       res.redirect("/trainer");
     },
   ],
+
   postDeleteTrainer: async (req, res) => {
     deleteTrainer(req.params.trainerID);
     res.redirect("/trainer");
