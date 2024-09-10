@@ -73,7 +73,7 @@ li {
   justify-content: center;
 }
 
-.test {
+.trainerContainer {
   border: solid black;
   display: flex;
   flex-wrap: wrap;
