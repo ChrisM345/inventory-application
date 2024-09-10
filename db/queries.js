@@ -35,6 +35,11 @@ async function getTrainers() {
   return rows;
 }
 
+async function getTrainerByID(id) {
+  const { rows } = await pool.query(`SELECT * FROM trainers WHERE id=${id}`);
+  return rows[0];
+}
+
 async function addTrainer(
   name,
   pokemon1,
@@ -50,6 +55,8 @@ async function addTrainer(
   pokemon6,
   pokemon6URL
 ) {
+  console.log(`IN QUERY`);
+  console.log(name);
   await pool.query(
     "INSERT INTO trainers (name, pokemon1, pokemon1URL, pokemon2, pokemon2URL, pokemon3, pokemon3URL, pokemon4, pokemon4URL, pokemon5, pokemon5URL, pokemon6, pokemon6URL) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)",
     [
@@ -70,6 +77,38 @@ async function addTrainer(
   );
 }
 
+async function editTrainer(
+  id,
+  name,
+  pokemon1,
+  pokemon1URL,
+  pokemon2,
+  pokemon2URL,
+  pokemon3,
+  pokemon3URL,
+  pokemon4,
+  pokemon4URL,
+  pokemon5,
+  pokemon5URL,
+  pokemon6,
+  pokemon6URL
+) {
+  await pool.query(`UPDATE trainers 
+    SET name = '${name}',
+    pokemon1 = '${pokemon1}', pokemon1URL='${pokemon1URL}',
+    pokemon2='${pokemon2}', pokemon2URL='${pokemon2URL}',
+    pokemon3='${pokemon3}', pokemon3URL='${pokemon3URL}',
+    pokemon4='${pokemon4}', pokemon4URL='${pokemon4URL}',
+    pokemon5='${pokemon5}', pokemon5URL='${pokemon5URL}',
+    pokemon6='${pokemon6}', pokemon6URL='${pokemon6URL}'
+    WHERE id=${id}`);
+}
+
+async function deleteTrainer(id) {
+  await pool.query(`DELETE from trainers WHERE id=${id}`);
+  return;
+}
+
 module.exports = {
   getPokemonData,
   getPokemonDetails,
@@ -79,4 +118,7 @@ module.exports = {
   searchPokemonType,
   getTrainers,
   addTrainer,
+  getTrainerByID,
+  editTrainer,
+  deleteTrainer,
 };
