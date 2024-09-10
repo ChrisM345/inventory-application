@@ -16,8 +16,14 @@
     </div>
     <div class="trainerCardContainer">
       <% trainerData.forEach((trainer) => { %>
-      <div class="test">
+      <div class="trainerContainer">
         <h2><%= trainer.name %></h2>
+        <form action="/trainer/<%= trainer.id %>/edit" method="get">
+          <input type="submit" value="Edit" />
+        </form>
+        <form action="/trainer/<%= trainer.id %>/delete" method="post">
+          <input type="submit" value="Delete" onclick="return confirm('Are you sure? - Delete <%= trainer.name%>')" />
+        </form>
         <div class="trainerCards">
           <div class="trainerCard">
             <h3><%= trainer.pokemon1 %></h3>

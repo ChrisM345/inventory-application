@@ -15,28 +15,33 @@
       </ul>
     </div>
     <div class="createTrainerForm">
-      <%- include("partials/errors.ejs") %>
+      <%- include("partials/errors.ejs") %> <% if (data.id) {%>
+      <form method="POST" action="/trainer/<%=data.id%>/edit">
+      <h2>THERE IS ID</h2>
+      <% } else { %>
       <form method="POST" action="/trainer/createTrainer">
+        <H2>NO ID</H2>
+        <% } %>
         <label for="name">Name: </label>
-        <input type="text" id="trainerName" name="trainerName" required />
+        <input type="text" id="name" name="name" value="<%=data.name%>" required />
         <br />
         <label for="pokemon1">Pokemon 1: </label>
-        <input list="pokemon" id="pokemon1" name="pokemon1" required />
+        <input list="pokemon" id="pokemon1" name="pokemon1" value="<%=data.pokemon1%>" required />
         <br />
         <label for="pokemon2">Pokemon 2: </label>
-        <input list="pokemon" id="pokemon2" name="pokemon2" />
+        <input list="pokemon" id="pokemon2" name="pokemon2" value="<%=data.pokemon2%>" required />
         <br />
         <label for="pokemon3">Pokemon 3: </label>
-        <input list="pokemon" id="pokemon3" name="pokemon3" />
+        <input list="pokemon" id="pokemon3" name="pokemon3" value="<%=data.pokemon3%>" required />
         <br />
         <label for="pokemon4">Pokemon 4: </label>
-        <input list="pokemon" id="pokemon4" name="pokemon4" />
+        <input list="pokemon" id="pokemon4" name="pokemon4" value="<%=data.pokemon4%>" required />
         <br />
         <label for="pokemon5">Pokemon 5: </label>
-        <input list="pokemon" id="pokemon5" name="pokemon5" />
+        <input list="pokemon" id="pokemon5" name="pokemon5" value="<%=data.pokemon5%>" required />
         <br />
         <label for="pokemon6">Pokemon 6: </label>
-        <input list="pokemon" id="pokemon6" name="pokemon6" />
+        <input list="pokemon" id="pokemon6" name="pokemon6" value="<%=data.pokemon6%>" required />
         <br />
         <input type="submit" />
 
