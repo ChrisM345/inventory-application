@@ -1,5 +1,4 @@
 .pokemonCardContainer {
-  border: solid red;
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -9,7 +8,8 @@
 }
 
 .pokemonCard {
-  border: solid black;
+  margin: 1px 1px 1px 1px;
+  outline: 2px black solid;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -17,7 +17,7 @@
 }
 
 .pokemonCard:hover {
-  outline: red solid;
+  outline: 4px red solid;
 }
 
 .search {
@@ -64,7 +64,6 @@ li {
 }
 
 .trainerCardContainer {
-  border: solid red;
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -74,7 +73,7 @@ li {
 }
 
 .trainerContainer {
-  border: solid black;
+  outline: solid black;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -82,7 +81,7 @@ li {
 }
 
 .trainerCards {
-  border: solid black;
+  border-top: black solid;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
